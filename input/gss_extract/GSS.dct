@@ -1,0 +1,13 @@
+infile dictionary {
+    _column(1)    numeric                               YEAR   %20f  "Gss year for this respondent                       "
+   _column(21)    numeric                             VSTRAT   %20f  "Variance stratum"
+   _column(41)    numeric                            WTSSALL   %20f  "Weight variable"
+   _column(61)    numeric                                GOD   %20f  "Rs confidence in the existence of god"
+   _column(81)    numeric                            RELIG16   %20f  "Religion in which raised"
+  _column(101)    numeric                              RELIG   %20f  "Rs religious preference"
+  _column(121)    numeric                                SEX   %20f  "Respondents sex"
+  _column(141)    numeric                               EDUC   %20f  "Highest year of school completed"
+  _column(161)    numeric                                AGE   %20f  "Age of respondent"
+  _column(181)    numeric                                ID_   %20f  "Respondent id number"
+  _column(201)    numeric                               VPSU   %20f  "Variance primary sampling unit"
+}

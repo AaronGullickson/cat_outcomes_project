@@ -1,0 +1,33 @@
+---
+title: "Categorical outcomes Project"
+author: "Your Name"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+load("output/gss_analytical_data.RData")
+if(!require(stargazer)) {
+  install.packages("stargazer")
+}
+```
+
+## Section Header
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+Here is an embedded code chunk for stargazer output in pdf form:
+
+```{r texreg_example, results="asis", echo=FALSE, error=FALSE, message=FALSE}
+
+```
+
+Here is an embedded code chunk for a nice figure with captions: 
+
+```{r figure_example, echo=FALSE, fig.cap="A Lovely Caption Goes Here"}
+boxplot(indegree~nsports, data=addhealth, las=1, 
+        col="skyblue", xlab="Number of sports played",
+        ylab="Number of friend nominations")
+```
