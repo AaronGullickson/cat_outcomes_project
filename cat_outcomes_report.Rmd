@@ -7,27 +7,19 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 load("output/gss_analytical_data.RData")
-if(!require(stargazer)) {
-  install.packages("stargazer")
+```
+
+```{r convert_olr_model, echo=FALSE}
+#this function can be used to get texreg to report the model produced by svyolr
+convert_olr_model <- function(model) {
+  tr <- createTexreg(
+    coef.names = rownames(summary(model)$coef), 
+    coef = summary(model)$coef[,1], 
+    se = summary(model)$coef[,2], 
+    pvalues = 1-pt(abs(summary(model)$coef[,3]), df=(model$nobs-length(model$coef)-1)),
+    gof.names = c("Deviance","N"), 
+    gof = c(model$deviance, model$nobs), 
+    gof.decimal = c(T,F)
+  )
 }
-```
-
-## Section Header
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
-
-Here is an embedded code chunk for stargazer output in pdf form:
-
-```{r texreg_example, results="asis", echo=FALSE, error=FALSE, message=FALSE}
-
-```
-
-Here is an embedded code chunk for a nice figure with captions: 
-
-```{r figure_example, echo=FALSE, fig.cap="A Lovely Caption Goes Here"}
-boxplot(indegree~nsports, data=addhealth, las=1, 
-        col="skyblue", xlab="Number of sports played",
-        ylab="Number of friend nominations")
 ```
